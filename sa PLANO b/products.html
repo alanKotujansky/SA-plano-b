@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>SensorLink - Produtos</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="logo">Sensor<span>Link</span></div>
+      <nav class="main-nav">
+        <a class="nav-link" href="index.html" title="Início">🏠 Início</a>
+        <a class="nav-link" href="products.html" title="Produtos">🛒 Produtos</a>
+        <div class="nav-cart-container">
+          <a class="nav-link" href="checkout.html" title="Carrinho">🛒 Carrinho</a>
+          <span class="cart-badge" id="cartBadge">0</span>
+        </div>
+        <a class="nav-link" href="login.html" title="Entrar">👤 Entrar</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="container products-page">
+      <div class="products-grid">
+        <!-- PRODUTO 1 -->
+        <div class="product-item">
+          <h3>SensorLink</h3>
+          <div class="product-image">Imagem do produto</div>
+          <p class="product-desc">FAZ TUDO PRA VC LIGA LUZ E DESLIGA SELOCO</p>
+          <div class="product-prices">
+            <div class="price-line">R$240,00 à vista</div>
+            <div class="price-line">R$42,90 em até 6x</div>
+          </div>
+          <button onclick="addToCart('SensorLink')" class="btn-primary">Comprar</button>
+        </div>
+
+        <!-- PRODUTO 2 -->
+        <div class="product-item">
+          <h3>SensorLink Pro</h3>
+          <div class="product-image">Imagem do produto</div>
+          <p class="product-desc">VERSÃO AVANÇADA COM MAIS FUNÇÕES</p>
+          <div class="product-prices">
+            <div class="price-line">R$420,00 à vista</div>
+            <div class="price-line">R$70,00 em até 6x</div>
+          </div>
+          <button onclick="addToCart('SensorLink Pro')" class="btn-primary">Comprar</button>
+        </div>
+
+        <!-- PRODUTO 3 -->
+        <div class="product-item">
+          <h3>SensorLink Premium</h3>
+          <div class="product-image">Imagem do produto</div>
+          <p class="product-desc">SISTEMA COMPLETO COM INSTALAÇÃO</p>
+          <div class="product-prices">
+            <div class="price-line">R$599,00 à vista</div>
+            <div class="price-line">R$99,83 em até 6x</div>
+          </div>
+          <button onclick="addToCart('SensorLink Premium')" class="btn-primary">Comprar</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">© 2025 SensorLink - Todos os direitos reservados
+      <div class="contact">+55 48 XXXXX-XX</div>
+    </div>
+  </footer>
+  <script src="main.js"></script>
+  <script src="chat.js"></script>
+</body>
+</html>
