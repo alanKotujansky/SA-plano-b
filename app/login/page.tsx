@@ -21,27 +21,34 @@ export default function Login() {
     }
 
     try {
-      const isEmail = emailOrPhone.includes("@")
+      const { data: user, error: userError } = await supabase
+        .from("usuarios")
+        .select("*")
+        .eq("email", emailOrPhone)
+        .maybeSingle()
 
-      const { data, error } = await supabase.auth.signInWithPassword({
-        email: isEmail ? emailOrPhone : `${emailOrPhone}@placeholder.com`,
-        password: password,
-      })
+      if (userError) {
+        console.error("[v0] Erro ao buscar usuário:", userError)
+        showError("Erro ao fazer login")
+        return
+      }
 
-      if (error) {
-        const { data: profile, error: profileError } = await supabase
-          .from("profiles")
-          .select("id")
-          .eq("email_or_phone", emailOrPhone)
-          .maybeSingle()
+      if (!user) {
+        showError("Você não tem cadastro")
+        return
+      }
 
-        if (!profile) {
-          showError("Você não tem cadastro")
-          return
-        }
-
+      if (user.senha !== password) {
         showError("Email/telefone ou senha incorretos")
         return
+      }
+
+      const { error: logError } = await supabase.from("logs_acesso").insert({
+        email: emailOrPhone,
+      })
+
+      if (logError) {
+        console.error("[v0] Erro ao registrar log:", logError)
       }
 
       // Mostrar popup de sucesso

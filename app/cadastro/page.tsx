@@ -16,7 +16,6 @@ export default function Cadastro() {
     const password = (document.getElementById("reg-pass") as HTMLInputElement).value
     const confirmPassword = (document.getElementById("reg-pass2") as HTMLInputElement).value
 
-    // Validações
     if (!name || !emailOrPhone || !password || !confirmPassword) {
       showError("Preencha todos os campos")
       return
@@ -33,30 +32,28 @@ export default function Cadastro() {
     }
 
     try {
-      // Verificar se é email ou telefone
-      const isEmail = emailOrPhone.includes("@")
+      const { data: existingUser } = await supabase
+        .from("usuarios")
+        .select("email")
+        .eq("email", emailOrPhone)
+        .maybeSingle()
 
-      const { data: authData, error: authError } = await supabase.auth.signUp({
-        email: isEmail ? emailOrPhone : `${emailOrPhone}@placeholder.com`,
-        password: password,
-      })
-
-      if (authError) {
-        showError(authError.message)
+      if (existingUser) {
+        showError("Este email já está cadastrado")
         return
       }
 
-      // Salvar dados adicionais na tabela profiles
-      if (authData.user) {
-        const { error: profileError } = await supabase.from("profiles").insert({
-          id: authData.user.id,
-          name: name,
-          email_or_phone: emailOrPhone,
-        })
+      const { error: insertError } = await supabase.from("usuarios").insert({
+        email: emailOrPhone,
+        senha: password,
+        nome_completo: name,
+        data_nascimento: null,
+      })
 
-        if (profileError) {
-          console.error("[v0] Erro ao salvar perfil:", profileError)
-        }
+      if (insertError) {
+        console.error("[v0] Erro ao cadastrar:", insertError)
+        showError("Erro ao realizar cadastro")
+        return
       }
 
       // Mostrar popup de sucesso
