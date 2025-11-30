@@ -29,6 +29,25 @@ export default function Login() {
       })
 
       if (error) {
+        if (error.message.includes("Invalid login credentials") || error.message.includes("Email not confirmed")) {
+          // Verificar se o email existe no banco
+          const emailToCheck = isEmail ? emailOrPhone : `${emailOrPhone}@placeholder.com`
+          const { data: userData } = await supabase.auth.admin
+            .getUserByEmail?.(emailToCheck)
+            .catch(() => ({ data: null }))
+
+          // Alternativa: verificar na tabela profiles
+          const { data: profile } = await supabase
+            .from("profiles")
+            .select("id")
+            .eq("email_or_phone", emailOrPhone)
+            .single()
+
+          if (!profile) {
+            showError("Você não tem cadastro")
+            return
+          }
+        }
         showError("Email/telefone ou senha incorretos")
         return
       }
