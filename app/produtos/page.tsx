@@ -1,6 +1,10 @@
 "use client"
 
+import { useState } from "react"
+
 export default function Produtos() {
+  const [showDetails, setShowDetails] = useState(false)
+
   const products = [
     {
       name: "SensorLink",
@@ -65,14 +69,79 @@ export default function Produtos() {
                   <div className="price-line">{product.price1}</div>
                   <div className="price-line">{product.price2}</div>
                 </div>
-                <button onClick={() => addToCart(product.name)} className="btn-comprar">
-                  Comprar
-                </button>
+                <div style={{ display: "flex", gap: "10px", marginTop: "15px" }}>
+                  <button onClick={() => setShowDetails(true)} className="btn-detalhes">
+                    Detalhes
+                  </button>
+                  <button onClick={() => addToCart(product.name)} className="btn-comprar">
+                    Comprar
+                  </button>
+                </div>
               </div>
             ))}
           </div>
         </section>
       </main>
+
+      {showDetails && (
+        <div className="modal-overlay" onClick={() => setShowDetails(false)}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <button className="modal-close" onClick={() => setShowDetails(false)}>
+              ×
+            </button>
+            <h2 style={{ color: "#00bcd4", marginBottom: "20px" }}>SensorLink - Detalhes do Produto</h2>
+
+            <div className="modal-body">
+              <h3>Sobre o Produto</h3>
+              <p>
+                O <strong>SensorLink</strong> é um sistema inteligente de automação residencial baseado em Arduino,
+                desenvolvido para facilitar o controle de dispositivos elétricos da sua casa de forma prática e
+                eficiente.
+              </p>
+
+              <h3>Características Principais</h3>
+              <ul>
+                <li>
+                  <strong>Controle Remoto:</strong> Ligue e desligue lâmpadas, ventiladores e outros aparelhos pelo
+                  celular
+                </li>
+                <li>
+                  <strong>Monitoramento em Tempo Real:</strong> Acompanhe o consumo de energia dos dispositivos
+                  conectados
+                </li>
+                <li>
+                  <strong>Automação Inteligente:</strong> Programe horários para ligar/desligar automaticamente
+                </li>
+                <li>
+                  <strong>Fácil Instalação:</strong> Não precisa mexer na fiação elétrica existente
+                </li>
+                <li>
+                  <strong>Economia de Energia:</strong> Reduza até 30% no consumo elétrico mensal
+                </li>
+              </ul>
+
+              <h3>Especificações Técnicas</h3>
+              <ul>
+                <li>Microcontrolador: Arduino UNO R3</li>
+                <li>Conectividade: WiFi integrado (ESP8266)</li>
+                <li>Tensão de Operação: 127V / 220V (bivolt)</li>
+                <li>Capacidade: Controla até 4 dispositivos simultaneamente</li>
+                <li>Aplicativo: Compatível com Android e iOS</li>
+                <li>Garantia: 12 meses</li>
+              </ul>
+
+              <h3>Conteúdo da Embalagem</h3>
+              <ul>
+                <li>1x Placa SensorLink (Arduino + módulo WiFi)</li>
+                <li>1x Fonte de alimentação 5V</li>
+                <li>4x Módulos relé para controle de dispositivos</li>
+                <li>1x Manual de instalação em português</li>
+                <li>Cabos de conexão</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      )}
 
       <footer className="site-footer">
         <div className="container footer-inner">
