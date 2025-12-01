@@ -34,6 +34,7 @@ export default function Checkout() {
   }, [])
 
   const loadSavedCards = async (email: string) => {
+    console.log("[v0] Carregando cartões salvos para:", email)
     try {
       const supabase = createClient()
       const { data, error } = await supabase
@@ -42,10 +43,14 @@ export default function Checkout() {
         .eq("email", email)
         .order("data_registro", { ascending: false })
 
-      if (error) throw error
+      if (error) {
+        console.error("[v0] Erro ao carregar cartões:", error)
+        throw error
+      }
+      console.log("[v0] Cartões carregados:", data)
       setSavedCards(data || [])
     } catch (error) {
-      console.error("Erro ao carregar cartões:", error)
+      console.error("[v0] Erro ao carregar cartões:", error)
     }
   }
 
