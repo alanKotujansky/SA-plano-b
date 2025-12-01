@@ -746,6 +746,365 @@ main {
 
 /* </CHANGE> */
 
+/* Adicionando estilos completos e organizados para página PIX */
+
+/* Página PIX - Layout Principal */
+.pix-main {
+  min-height: calc(100vh - 140px);
+  padding: 60px 0;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+.pix-header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.pix-title {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--blue-3);
+  margin-bottom: 16px;
+}
+
+.pix-status {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 8px 20px;
+  background: #fff3cd;
+  color: #856404;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.pix-order {
+  color: #666;
+  font-weight: 600;
+}
+
+/* Layout em Grid */
+.pix-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+@media (max-width: 968px) {
+  .pix-content {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Seção Esquerda - QR Code */
+.pix-left {
+  display: flex;
+  flex-direction: column;
+}
+
+.qr-section {
+  background: white;
+  border-radius: 16px;
+  padding: 32px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.qr-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.pix-icon {
+  width: 56px;
+  height: 56px;
+  background: linear-gradient(135deg, var(--blue-1), var(--blue-2));
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  flex-shrink: 0;
+}
+
+.qr-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #333;
+  margin: 0;
+}
+
+.qr-subtitle {
+  color: #666;
+  margin: 4px 0 0 0;
+  font-size: 14px;
+}
+
+.qr-code-box {
+  background: #f8f9fa;
+  border-radius: 12px;
+  padding: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px dashed #dee2e6;
+}
+
+.qr-image {
+  width: 280px;
+  height: 280px;
+  border-radius: 8px;
+  background: white;
+  padding: 16px;
+}
+
+.timer-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 16px;
+  background: #fff3cd;
+  border-radius: 10px;
+  color: #856404;
+  font-size: 15px;
+}
+
+.timer-box svg {
+  flex-shrink: 0;
+}
+
+/* Seção Direita - Informações */
+.pix-right {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.payment-card {
+  background: white;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.payment-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid #f0f0f0;
+}
+
+.payment-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #333;
+  margin: 0;
+}
+
+.payment-amount {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--blue-1);
+}
+
+.payment-method {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.method-icon {
+  width: 56px;
+  height: 56px;
+  background: var(--blue-1);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 700;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.method-name {
+  font-size: 18px;
+  font-weight: 700;
+  color: #333;
+}
+
+.method-desc {
+  color: #666;
+  font-size: 14px;
+  margin-top: 2px;
+}
+
+/* Card de Código PIX */
+.code-card {
+  background: white;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.code-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #333;
+  margin: 0 0 8px 0;
+}
+
+.code-desc {
+  color: #666;
+  font-size: 14px;
+  margin: 0 0 16px 0;
+}
+
+.code-box {
+  background: #f8f9fa;
+  border: 2px solid #e9ecef;
+  border-radius: 10px;
+  padding: 16px;
+  margin-bottom: 16px;
+  overflow-x: auto;
+}
+
+.pix-code-text {
+  font-family: "Courier New", monospace;
+  font-size: 13px;
+  color: #495057;
+  word-break: break-all;
+  display: block;
+}
+
+.copy-button {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 24px;
+  background: var(--blue-1);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.copy-button:hover {
+  background: var(--blue-2);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(42, 179, 234, 0.3);
+}
+
+.copy-button svg {
+  flex-shrink: 0;
+}
+
+/* Card de Ajuda */
+.help-card {
+  background: #fff8f2;
+  border: 2px solid #ffd9b3;
+  border-radius: 16px;
+  padding: 20px;
+  display: flex;
+  gap: 16px;
+}
+
+.help-card svg {
+  color: #d97706;
+  flex-shrink: 0;
+}
+
+.help-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #92400e;
+  margin: 0 0 4px 0;
+}
+
+.help-desc {
+  color: #b45309;
+  font-size: 14px;
+  margin: 0 0 8px 0;
+}
+
+.help-link {
+  color: #d97706;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.help-link:hover {
+  text-decoration: underline;
+}
+
+/* Botões de Ação */
+.action-buttons {
+  display: flex;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.btn-back {
+  flex: 1;
+  padding: 14px 24px;
+  background: white;
+  color: #666;
+  border: 2px solid #e9ecef;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-back:hover {
+  background: #f8f9fa;
+  border-color: #dee2e6;
+}
+
+.btn-confirm {
+  flex: 2;
+  padding: 14px 24px;
+  background: #28a745;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-confirm:hover {
+  background: #218838;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3);
+}
+
 /* Adicionando estilo para botão desabilitado */
 .btn-comprar:disabled {
   opacity: 0.5;
